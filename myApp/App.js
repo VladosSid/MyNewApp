@@ -12,6 +12,7 @@ SplashScreen.preventAutoHideAsync();
 
 import { SingIn, LogIn, Home } from "./src/Screens";
 import { ButtonHeaderAuth } from "./src/Components/Button";
+import { getHeaderTitle } from "./src/helpers";
 
 const MinePages = createStackNavigator();
 
@@ -49,42 +50,22 @@ export default function App() {
     <NavigationContainer style={styles.container}>
       <MinePages.Navigator
         initialRouteName="Login"
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: "#fff",
-            borderBottomWidth: 1,
-          },
-          headerTitleAlign: "center",
-          headerTitleStyle: {
-            fontSize: 17,
-            lineHeight: 22,
-          },
-        }}
+        screenOptions={styles.headerStyle}
       >
         <MinePages.Screen
           name="Registration"
           component={SingIn}
-          options={{
-            title: "Реєстрація",
-          }}
+          options={{ headerShown: false }}
         />
         <MinePages.Screen
           name="Login"
           component={LogIn}
-          options={{
-            title: "Вхід",
-
-            // headerRight: () => (
-            //   <ButtonHeaderAuth name="Зареєструватися" onPres="Registration" />
-            // ),
-          }}
+          options={{ headerShown: false }}
         />
         <MinePages.Screen
           name="Home"
           component={Home}
-          options={{
-            title: "Головна",
-          }}
+          options={{ headerShown: false }}
         />
       </MinePages.Navigator>
 
@@ -98,5 +79,16 @@ const styles = StyleSheet.create({
     width: "100%",
     flex: 1,
     backgroundColor: "#fff",
+  },
+  headerStyle: {
+    headerStyle: {
+      backgroundColor: "#fff",
+      borderBottomWidth: 1,
+    },
+    headerTitleAlign: "center",
+    headerTitleStyle: {
+      fontSize: 17,
+      lineHeight: 22,
+    },
   },
 });
