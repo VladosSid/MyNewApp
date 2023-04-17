@@ -1,4 +1,4 @@
-import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
 export function ButtonHeaderLogOut({ name, onPres, navigation }) {
