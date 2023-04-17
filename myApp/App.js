@@ -55,7 +55,9 @@ export default function App() {
         <MinePages.Screen
           name="Registration"
           component={SingIn}
-          options={{ headerShown: false }}
+          options={{
+            headerShown: false,
+          }}
         />
         <MinePages.Screen
           name="Login"
@@ -65,7 +67,9 @@ export default function App() {
         <MinePages.Screen
           name="Home"
           component={Home}
-          options={{ headerShown: false }}
+          options={{
+            headerShown: false,
+          }}
         />
       </MinePages.Navigator>
 

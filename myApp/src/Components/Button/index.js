@@ -1,2 +1,2 @@
 export { default as ButtonAuth } from "./ButtonAuth";
-export { default as ButtonHeaderAuth } from "./ButtonHeaderAuth";
+export { default as ButtonHeaderLogOut } from "./ButtonHeaderLogOut";

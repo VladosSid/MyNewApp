@@ -1,22 +1,23 @@
-import { StyleSheet, View, Image } from "react-native";
+import { StyleSheet, View, Image, Button } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
 
 import { ProfileScreen, PostsScreen, CreatePostsScreen } from "../Screens";
+import { ButtonHeaderLogOut } from "../Components/Button";
 import { getHeaderTitle } from "../helpers";
 
 const Tabs = createBottomTabNavigator();
 
-export function Home() {
+export function Home({ navigation }) {
   return (
     <Tabs.Navigator
       initialRouteName="PostsScreen"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
-          if (route.name === "Profile") {
-            return <Feather name="user" size={size} color={color} />;
-          } else if (route.name === "PostsScreen") {
+          if (route.name === "PostsScreen") {
             return <Feather name="grid" size={size} color={color} />;
+          } else if (route.name === "Profile") {
+            return <Feather name="user" size={size} color={color} />;
           } else if (route.name === "CreatePostsScreen") {
             return (
               <View style={style.buttonAddPost}>
@@ -25,28 +26,42 @@ export function Home() {
             );
           }
         },
+        tabBarActiveTintColor: "#FF6C00",
+        tabBarInactiveTintColor: "#212121",
       })}
-      tabBarOptions={{
-        activeTintColor: "#FF6C00",
-        inactiveTintColor: "#212121",
-      }}
     >
       <Tabs.Screen
-        name="Profile"
-        component={ProfileScreen}
-        options={{ tabBarShowLabel: false }}
+        name="PostsScreen"
+        component={PostsScreen}
+        options={{
+          tabBarShowLabel: false,
+          title: "Публікації",
+          headerTitleStyle: {
+            alignContent: "center",
+            fontFamily: "Roboto-Medium",
+            color: "#212121",
+          },
+          headerTitleAlign: "center",
+          headerRight: () => <ButtonHeaderLogOut navigation={navigation} />,
+        }}
       />
 
       <Tabs.Screen
         name="CreatePostsScreen"
         component={CreatePostsScreen}
-        options={{ tabBarShowLabel: false }}
+        options={{
+          tabBarShowLabel: false,
+          title: "Створити публікацію",
+        }}
       />
 
       <Tabs.Screen
-        name="PostsScreen"
-        component={PostsScreen}
-        options={{ tabBarShowLabel: false }}
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          tabBarShowLabel: false,
+          title: "Профіль",
+        }}
       />
     </Tabs.Navigator>
   );

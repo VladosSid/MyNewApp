@@ -1,5 +1,6 @@
 function getHeaderTitle(route) {
-  switch (route.name) {
+  console.log(route);
+  switch (route) {
     case "Profile":
       return "Профіль";
     case "PostsScreen":

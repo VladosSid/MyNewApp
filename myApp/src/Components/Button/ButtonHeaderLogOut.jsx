@@ -1,13 +1,15 @@
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
+import { Feather } from "@expo/vector-icons";
 
-export function ButtonHeaderAuth({ name, onPres, navigation }) {
+export function ButtonHeaderLogOut({ name, onPres, navigation }) {
+  const logOut = () => {
+    console.log("Logout");
+    navigation.navigate("Login");
+  };
   return (
     <>
-      <TouchableOpacity
-        style={style.button}
-        onPress={() => navigation.navigate("Registration")}
-      >
-        <Text style={style.text}>{name}</Text>
+      <TouchableOpacity style={style.button} onPress={logOut}>
+        <Feather name="log-out" size={24} color="#bebebe" />
       </TouchableOpacity>
     </>
   );
@@ -37,4 +39,4 @@ const style = StyleSheet.create({
   },
 });
 
-export default ButtonHeaderAuth;
+export default ButtonHeaderLogOut;
