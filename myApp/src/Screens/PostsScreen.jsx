@@ -4,10 +4,6 @@ import {
   SafeAreaView,
   Text,
   Image,
-  Platform,
-  KeyboardAvoidingView,
-  TouchableWithoutFeedback,
-  Keyboard,
   FlatList,
 } from "react-native";
 import React, { useState } from "react";
@@ -18,21 +14,21 @@ const data = [
   {
     id: "123",
     name: "Ліс",
-    photo: "require('../../../img/testImgPosts/Rectangle_23.jpg')",
+    photo: "../../../img/testImgPosts/Rectangle_23.jpg",
     locate: "Ivano-Frankivs'k Region, Ukraine",
     comments: 0,
   },
   {
     id: "124",
     name: "Закат на Черном море",
-    photo: "require('../../../img/testImgPosts/Rectangle_24.jpg')",
+    photo: "../../../img/testImgPosts/Rectangle_24.jpg",
     locate: "Ukraine",
     comments: 1,
   },
   {
     id: "125",
     name: "Старый домик в Венеции",
-    photo: "require('../../../img/testImgPosts/Rectangle_25.jpg')",
+    photo: "../../../img/testImgPosts/Rectangle_25.jpg",
     locate: "Italy",
     comments: 6,
   },
@@ -43,7 +39,7 @@ export function ProfileScreen() {
 
   return (
     <SafeAreaView style={style.container}>
-      {/* <View style={style.containerUser}>
+      <View style={style.containerUser}>
         <View style={style.imageUserContainer}>
           <Image
             source={require("../../img/UserProfile/Rectangle_22.jpg")}
@@ -53,9 +49,10 @@ export function ProfileScreen() {
           <Text style={style.nameUser}>Name user</Text>
           <Text style={style.emailUser}>Email User</Text>
         </View>
-      </View> */}
-      <View style={{ marginTop: 32 }}>
+      </View>
+      <View style={style.containerCard}>
         <FlatList
+          showsVerticalScrollIndicator={false}
           data={posts}
           renderItem={({ item }) => <PostsList list={item} />}
           keyExtractor={(item) => item.id}
@@ -67,6 +64,7 @@ export function ProfileScreen() {
 
 const style = StyleSheet.create({
   container: {
+    flex: 1,
     paddingLeft: 16,
     paddingRight: 16,
     paddingTop: 32,
@@ -97,6 +95,13 @@ const style = StyleSheet.create({
     lineHeight: 13,
 
     color: "rgba(33, 33, 33, 0.8)",
+  },
+
+  containerCard: {
+    display: "flex",
+    justifyContent: "center",
+    flex: 1,
+    marginTop: 32,
   },
 });
 
