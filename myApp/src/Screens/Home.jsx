@@ -2,7 +2,7 @@ import { StyleSheet, View, Image, Button } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
 
-import { ProfileScreen, PostsScreen, CreatePostsScreen } from "../Screens";
+import { ProfileScreen, PostsScreen, CreatePostsScreen } from ".";
 import { ButtonHeaderLogOut } from "../Components/Button";
 import { getHeaderTitle } from "../helpers";
 
@@ -52,6 +52,13 @@ export function Home({ navigation }) {
         options={{
           tabBarShowLabel: false,
           title: "Створити публікацію",
+          headerTitleStyle: {
+            alignContent: "center",
+            fontFamily: "Roboto-Medium",
+            color: "#212121",
+          },
+          headerTitleAlign: "center",
+          headerRight: () => <ButtonHeaderLogOut navigation={navigation} />,
         }}
       />
 
@@ -61,6 +68,13 @@ export function Home({ navigation }) {
         options={{
           tabBarShowLabel: false,
           title: "Профіль",
+          headerTitleStyle: {
+            alignContent: "center",
+            fontFamily: "Roboto-Medium",
+            color: "#212121",
+          },
+          headerTitleAlign: "center",
+          headerRight: () => <ButtonHeaderLogOut navigation={navigation} />,
         }}
       />
     </Tabs.Navigator>
